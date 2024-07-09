@@ -1,0 +1,8 @@
+<div>
+  <button (click)="refreshItems()">Refresh items</button>
+</div>
+<ul>
+  <li *ngFor="let item of items; trackBy: trackByItem">
+    <span>{{ item.id }} - {{ item.name }}</span>
+  </li>
+</ul>
