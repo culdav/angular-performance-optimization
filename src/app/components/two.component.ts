@@ -33,7 +33,7 @@ import { FourComponent } from './four.component';
   `,
   styles: `
   `,
-  changeDetection: ChangeDetectionStrategy.OnPush,
+  changeDetection: ChangeDetectionStrategy.Default,
   encapsulation: ViewEncapsulation.None,
 })
 export class TwoComponent extends BaseNodeComponent {

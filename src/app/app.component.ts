@@ -15,7 +15,7 @@ import { TwoComponent } from './components/two.component';
   standalone: true,
   imports: [TwoComponent, ThreeComponent, ParentComponent],
   encapsulation: ViewEncapsulation.None,
-  changeDetection: ChangeDetectionStrategy.OnPush,
+  changeDetection: ChangeDetectionStrategy.Default,
 })
 export class AppComponent extends BaseNodeComponent {
 }

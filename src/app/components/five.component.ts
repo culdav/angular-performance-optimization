@@ -15,6 +15,6 @@ import { TenComponent } from './ten.component';
     <app-ten class="node" />
   `,
   styles: ``,
-  changeDetection: ChangeDetectionStrategy.OnPush,
+  changeDetection: ChangeDetectionStrategy.Default,
 })
 export class FiveComponent extends BaseNodeComponent {}
