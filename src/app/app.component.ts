@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { MemoizedPipe } from './memoized.pipe';
 import { FormsModule } from '@angular/forms';
@@ -16,6 +16,7 @@ import { FormsModule } from '@angular/forms';
     </div>
     <button (click)="randomButtonClick()">Random btn</button>
   `,
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AppComponent {
   number: number = 5;
