@@ -19,7 +19,7 @@ import { FourComponent } from './four.component';
       class="node-label"
       [style.background-color]="color"
       (click)="decreaseCounter()"
-      >2 - {{ counterService.counter() }}
+      >2 - {{ counterService.counter$ | async }}
     </span> -->
     <span
       class="node-label"
@@ -33,7 +33,7 @@ import { FourComponent } from './four.component';
   `,
   styles: `
   `,
-  changeDetection: ChangeDetectionStrategy.Default,
+  changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
 })
 export class TwoComponent extends BaseNodeComponent {

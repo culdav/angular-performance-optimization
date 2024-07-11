@@ -16,40 +16,49 @@ import { BaseNodeComponent } from './base-node.component';
   standalone: true,
   imports: [AsyncPipe],
   template: `
-    <span class="node-label" [style.background-color]="color"
-      >13 - {{ counter$ | async }}</span
-    >
     <!-- <span class="node-label" [style.background-color]="color"
-      >13 - {{ counterService.counter() }}</span
+      >13 - {{ counter$ | async }}</span
     > -->
+
+    <!-- <span class="node-label" [style.background-color]="color"
+      (click)="increaseCounter()"
+    >13 - {{ counterSignal() }}</span
+    > -->
+
+    <!-- <span
+      class="node-label"
+      [style.background-color]="color"
+      >13 - {{ counterSignal() }}</span
+    > -->
+
+    <span class="node-label" [style.background-color]="color"
+      >13 - {{ counterService.counter$ | async }}</span
+    >
   `,
   styles: ``,
-  changeDetection: ChangeDetectionStrategy.Default,
+  changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
 })
 export class ThirteenComponent extends BaseNodeComponent {
   counterBs = new BehaviorSubject<number>(0);
   counter$ = this.counterBs.asObservable();
-  // counterSignal = signal(0);
+  counterSignal = signal(0);
 
-  // host = inject(ElementRef);
-  // counterService = inject(CounterService);
+  host = inject(ElementRef);
+  counterService = inject(CounterService);
 
   constructor() {
     super();
 
-    setInterval(() => {
-      this.counterBs.next(this.counterBs.value + 1);
-    }, 1000);
-
+    //
     // TODO: unsubscribe
-    // fromEvent(this.host.nativeElement, 'click').subscribe(() => {
-    //   this.increaseCounter();
-    // });
+    fromEvent(this.host.nativeElement, 'click').subscribe(() => {
+      this.increaseCounter();
+    });
   }
 
   increaseCounter() {
     // this.counterSignal.update((value) => value + 1);
-    // this.counterService.increaseCounter();
+    this.counterService.increaseCounter();
   }
 }
